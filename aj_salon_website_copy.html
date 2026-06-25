@@ -1,0 +1,411 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .page { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .section-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-info);
+    background: var(--color-background-info);
+    border-radius: var(--border-radius-md);
+    padding: 4px 10px;
+    margin-bottom: 1rem;
+  }
+
+  .page-section { margin-bottom: 3rem; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 2rem; }
+  .page-section:first-child { border-top: none; padding-top: 0; }
+
+  h1.hero-headline {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .accent { color: #B85C38; }
+
+  h2.sub-headline {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .intro-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--color-text-primary);
+    max-width: 680px;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .why-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem 1.25rem;
+  }
+  .why-card .icon { font-size: 20px; color: #B85C38; margin-bottom: 8px; }
+  .why-card h3 { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .why-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+
+  h2.section-heading {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .section-intro {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-list { display: flex; flex-direction: column; gap: 16px; }
+  .service-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+  .service-card-left {}
+  .service-card h3 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .service-card .desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px; }
+  .benefit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+  .service-icon { font-size: 24px; color: #B85C38; opacity: 0.8; }
+
+  .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 1.5rem; }
+  .cta-card {
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+  }
+  .cta-booking { background: #F9EDE7; border: 0.5px solid #E8C4B3; }
+  .cta-contact { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); }
+  .cta-trust { background: #EAF3DE; border: 0.5px solid #C0DD97; }
+  .cta-card .cta-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .cta-booking .cta-label { color: #993C1D; }
+  .cta-contact .cta-label { color: var(--color-text-secondary); }
+  .cta-trust .cta-label { color: #3B6D11; }
+  .cta-card h3 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .cta-card p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px; }
+  .cta-btn {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    border: none;
+  }
+  .cta-booking .cta-btn { background: #B85C38; color: #fff; }
+  .cta-contact .cta-btn { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); color: var(--color-text-primary); }
+  .cta-trust .cta-btn { background: #639922; color: #fff; }
+
+  .copy-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .copy-btn {
+    background: none;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding: 3px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .copy-btn:hover { background: var(--color-background-secondary); }
+  .copied { color: #3B6D11 !important; }
+
+  .tabs { display: flex; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap; }
+  .tab-btn {
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+  }
+  .tab-btn.active {
+    background: #B85C38;
+    color: #fff;
+    border-color: #B85C38;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">AJ Salon website copy — homepage, services page, and call-to-action sections</h2>
+
+<div class="page">
+
+  <div style="margin-bottom: 2rem;">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('homepage')"><i class="ti ti-home" aria-hidden="true"></i> Homepage</button>
+      <button class="tab-btn" onclick="switchTab('services')"><i class="ti ti-scissors" aria-hidden="true"></i> Services Page</button>
+      <button class="tab-btn" onclick="switchTab('ctas')"><i class="ti ti-speakerphone" aria-hidden="true"></i> CTAs</button>
+    </div>
+  </div>
+
+  <div id="tab-homepage" class="tab-content active">
+
+    <div class="page-section">
+      <div class="copy-row">
+        <span class="section-label">Headline</span>
+        <button class="copy-btn" onclick="copyText('headline-text', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+      </div>
+      <h1 class="hero-headline" id="headline-text">Your Best Look, Every Single Day — <span class="accent">Only at AJ Salon.</span></h1>
+    </div>
+
+    <div class="page-section">
+      <div class="copy-row">
+        <span class="section-label">Subheadline</span>
+        <button class="copy-btn" onclick="copyText('subheadline-text', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+      </div>
+      <h2 class="sub-headline" id="subheadline-text">Hyderabad's go-to beauty destination for haircuts, skincare, bridal looks, and total pampering — all under one roof.</h2>
+    </div>
+
+    <div class="page-section">
+      <div class="copy-row">
+        <span class="section-label">Introduction</span>
+        <button class="copy-btn" onclick="copyText('intro-text', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+      </div>
+      <p class="intro-body" id="intro-text">Welcome to AJ Salon — where great hair days are a guarantee, not a gamble. Whether you're walking in for a quick trim or getting ready for the most important day of your life, our team of skilled stylists and beauty experts is here to make sure you leave looking and feeling your absolute best. We believe beauty is personal, and every service we offer is tailored to your unique style, skin type, and lifestyle. Located in the heart of Hyderabad, AJ Salon is the place where self-care meets real results.</p>
+    </div>
+
+    <div class="page-section">
+      <span class="section-label">Why Choose Us</span>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+          <h3>Expert Stylists</h3>
+          <p>Trained professionals who stay current with the latest trends and techniques in hair and beauty.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
+          <h3>Personalized Care</h3>
+          <p>Every visit begins with a consultation so your service perfectly fits your look and lifestyle.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+          <h3>Premium Products</h3>
+          <p>We only use salon-grade, skin-safe products trusted by beauty professionals worldwide.</p>
+        </div>
+        <div class="why-card">
+          <div class="icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+          <h3>Hygienic Standards</h3>
+          <p>Clean, sanitised tools and a fresh, welcoming salon environment — every single time.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="tab-services" class="tab-content">
+
+    <div class="page-section" style="border-top: none; padding-top: 0;">
+      <h2 class="section-heading">Our Services</h2>
+      <p class="section-intro">Everything you need to look great and feel confident — all in one place.</p>
+      <div class="service-list">
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Haircut</h3>
+            <p class="desc">A great cut is the foundation of any good look. Our stylists take the time to understand your face shape, hair texture, and personal style before picking up the scissors. Whether you want a bold new style or a clean, polished trim, you'll walk out with a cut that works for you.</p>
+            <div class="benefit-tags">
+              <span class="tag">Precision cut</span>
+              <span class="tag">Style consultation included</span>
+              <span class="tag">Men & women</span>
+              <span class="tag">All hair types</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-scissors" aria-hidden="true"></i></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Hair Spa</h3>
+            <p class="desc">Restore shine, softness, and strength to dull or damaged hair with a nourishing hair spa treatment. Using deep-conditioning formulas, our therapists repair damage from heat, pollution, and chemical treatments — leaving your hair visibly healthier from the very first session.</p>
+            <div class="benefit-tags">
+              <span class="tag">Deep conditioning</span>
+              <span class="tag">Damage repair</span>
+              <span class="tag">Scalp nourishment</span>
+              <span class="tag">Frizz control</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-droplets" aria-hidden="true"></i></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Facial</h3>
+            <p class="desc">Give your skin the attention it deserves. Our facials are customised to your skin type — whether oily, dry, or combination — and target common concerns like dullness, acne, uneven tone, and fine lines. Walk out with a refreshed, radiant glow that lasts for days.</p>
+            <div class="benefit-tags">
+              <span class="tag">Skin-type matched</span>
+              <span class="tag">Deep cleansing</span>
+              <span class="tag">Brightening & glow</span>
+              <span class="tag">Anti-ageing options</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Bridal Makeup</h3>
+            <p class="desc">Your wedding day calls for a look that lasts as long as the memories. Our bridal makeup artists create stunning, camera-ready looks that complement your outfit, skin tone, and personal style — from classic traditional bridal to modern glam. Trial sessions available.</p>
+            <div class="benefit-tags">
+              <span class="tag">Trial session included</span>
+              <span class="tag">Long-lasting formula</span>
+              <span class="tag">Traditional & modern styles</span>
+              <span class="tag">HD & airbrush finish</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Manicure</h3>
+            <p class="desc">Well-groomed hands make a statement. Our manicure treatments go beyond nail polish — with exfoliation, cuticle care, moisturising, and a professional finish, your hands will look polished and feel incredibly soft. Choose from classic, gel, or nail art options.</p>
+            <div class="benefit-tags">
+              <span class="tag">Cuticle care</span>
+              <span class="tag">Classic & gel options</span>
+              <span class="tag">Nail art available</span>
+              <span class="tag">Long-lasting finish</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-hand-finger" aria-hidden="true"></i></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-card-left">
+            <h3>Pedicure</h3>
+            <p class="desc">Your feet carry you everywhere — it's time to treat them. Our pedicure services start with a relaxing soak, followed by thorough exfoliation, nail shaping, cuticle work, and a long-lasting polish of your choice. A truly indulgent experience from heel to toe.</p>
+            <div class="benefit-tags">
+              <span class="tag">Relaxing foot soak</span>
+              <span class="tag">Full heel care</span>
+              <span class="tag">Exfoliation & massage</span>
+              <span class="tag">Chip-resistant polish</span>
+            </div>
+          </div>
+          <div class="service-icon"><i class="ti ti-shoe" aria-hidden="true"></i></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="tab-ctas" class="tab-content">
+
+    <div class="page-section" style="border-top: none; padding-top: 0;">
+      <h2 class="section-heading">Call-to-Action Sections</h2>
+      <p class="section-intro">Ready-to-use CTAs for bookings, contact, and building trust.</p>
+      <div class="cta-grid">
+
+        <div class="cta-card cta-booking">
+          <div class="cta-label"><i class="ti ti-calendar" style="font-size:12px" aria-hidden="true"></i> Booking CTA</div>
+          <h3>Ready for a fresh look?</h3>
+          <p>Book your appointment in minutes. Choose your service, pick a time that suits you, and walk in to a salon experience tailored just for you. Spots fill up fast — don't wait!</p>
+          <button class="cta-btn">Book Your Appointment →</button>
+        </div>
+
+        <div class="cta-card cta-contact">
+          <div class="cta-label"><i class="ti ti-phone" style="font-size:12px" aria-hidden="true"></i> Contact CTA</div>
+          <h3>Have a question for us?</h3>
+          <p>Unsure which service is right for you? Want to know more about bridal packages or group bookings? Our friendly team is just a call or message away. We'd love to help.</p>
+          <button class="cta-btn">Get in Touch</button>
+        </div>
+
+        <div class="cta-card cta-trust">
+          <div class="cta-label"><i class="ti ti-star" style="font-size:12px" aria-hidden="true"></i> Trust CTA</div>
+          <h3>Loved by 1,000+ happy clients</h3>
+          <p>From first-timers to loyal regulars, our clients keep coming back — and they tell their friends. Read real reviews from people who've experienced the AJ Salon difference.</p>
+          <button class="cta-btn">See What Clients Say →</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-section">
+      <span class="section-label">Full CTA Copy — Text View</span>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 1rem;">
+
+        <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem;">
+          <div class="copy-row" style="margin-bottom: 10px;">
+            <span style="font-size: 13px; font-weight: 500; color: var(--color-text-primary);">Booking CTA — full copy</span>
+            <button class="copy-btn" onclick="copyText('cta1-full', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+          </div>
+          <p id="cta1-full" style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">Headline: Ready for a fresh look? | Body: Book your appointment in minutes. Choose your service, pick a time that suits you, and walk in to a salon experience tailored just for you. Spots fill up fast — don't wait! | Button: Book Your Appointment →</p>
+        </div>
+
+        <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem;">
+          <div class="copy-row" style="margin-bottom: 10px;">
+            <span style="font-size: 13px; font-weight: 500; color: var(--color-text-primary);">Contact CTA — full copy</span>
+            <button class="copy-btn" onclick="copyText('cta2-full', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+          </div>
+          <p id="cta2-full" style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">Headline: Have a question for us? | Body: Unsure which service is right for you? Want to know more about bridal packages or group bookings? Our friendly team is just a call or message away. We'd love to help. | Button: Get in Touch</p>
+        </div>
+
+        <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem;">
+          <div class="copy-row" style="margin-bottom: 10px;">
+            <span style="font-size: 13px; font-weight: 500; color: var(--color-text-primary);">Trust CTA — full copy</span>
+            <button class="copy-btn" onclick="copyText('cta3-full', this)"><i class="ti ti-copy" style="font-size:13px" aria-hidden="true"></i> Copy</button>
+          </div>
+          <p id="cta3-full" style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.8;">Headline: Loved by 1,000+ happy clients | Body: From first-timers to loyal regulars, our clients keep coming back — and they tell their friends. Read real reviews from people who've experienced the AJ Salon difference. | Button: See What Clients Say →</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+function copyText(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="ti ti-check" style="font-size:13px" aria-hidden="true"></i> Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+</script>
