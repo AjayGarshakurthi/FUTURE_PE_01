@@ -15,6 +15,9 @@ The website is designed to showcase salon services, pricing, and contact details
 - **JavaScript** → Basic interactivity and functionality  
 - **GitHub Pages** → Website hosting and deployment
 
+- ## 📁 Project Structure
+This is a **single-file project**, so all code is inside:
+
 ## 📌 Features
 - 💇‍♀️ Modern and attractive salon landing page design  
 - 📱 Responsive layout for mobile and desktop devices  
